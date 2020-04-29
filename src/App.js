@@ -6,6 +6,9 @@ import { Provider } from 'react-redux';
 import Btn from './components/Btn.js';
 import Count from './components/Count.js'
 import List1 from './components/List1.js'
+import Thunk from './components/Thunk.js'
+import 'element-theme-default';
+
 // import setAction from './action/index.js';
 
 // function handleClick() {
@@ -15,6 +18,7 @@ import List1 from './components/List1.js'
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {}
   }
   //组件加载完成的时候监听
   // componentDidMount() {
@@ -34,6 +38,7 @@ class App extends React.Component {
         <Btn />
         <Count />
       </div>
+      <div style={{width: '100%', textAlign: 'center', marginTop: '50px'}}><Thunk /></div>
       </Provider>
     )
   }

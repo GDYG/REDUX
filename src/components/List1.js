@@ -7,6 +7,7 @@ import $ from 'jquery';
 class List1 extends Component {
     constructor(props) {
         super(props)
+        this.state = {}
     } 
 
     handleClick = () => {
@@ -26,7 +27,7 @@ class List1 extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='lists'>
                 <Input value={this.props.inputValue} className='inputName' placeholder='Wirte something' onChange={this.handleChange}/>
                 <Button type='primary' style={{marginLeft: '10px'}} onClick={this.handleClick}>增加</Button>
                 <List
