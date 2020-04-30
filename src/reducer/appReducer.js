@@ -9,7 +9,7 @@
 }
 
 const appReducer = (state = initState, action) => {
-    console.log(action)
+    // console.log(action)
      switch(action.type) {
         case 'send_type':
             if(!action.value) return state;

@@ -29,16 +29,42 @@ class Thunk extends Component {
         this.props.dispatch(asyncAction())
     }
 
+    reduxSaga= () =>{
+        const { dispatch } = this.props;
+        dispatch({
+            type: 'saga_type'
+        })
+    }
+
     render() {
-        console.log(this.props);
-        
+        // console.log(this.props);
+        const {three, four} = this.props
+
+        let msg
+        if(four.status && four.status === 0) {
+            msg = (<span>{four.msg}</span>)
+        }else if(four.status === 1) {
+            msg = (<Spin tip="加载中..."></Spin>)
+        }else if(four.status === 2){
+            msg = (<span>加载成功</span>)
+        }else {
+            msg = (<span>{four.msg}</span>)
+        }
         return (
             <div>
                 <Button type='danger' onClick={this.reduxThunk}>redux异步</Button>
                 <br />
                 <br />
                 <br />
-                {this.props.flag && this.props.flag === true ? <Spin tip="加载中..."></Spin> : <span>{this.props.message}</span>}
+                {three.flag && three.flag === true ? <Spin tip="加载中..."></Spin> : <span>{three.message}</span>}
+
+                <div>
+                    <br />
+                    <br />
+                    <br />
+                    <Button type='primary' onClick={this.reduxSaga}>redux-saga</Button>
+                    { msg }
+                </div>
             </div>
         )
     }
@@ -50,7 +76,8 @@ const mapDispatchToProps = (dispatch) =>{
     }
 }
 const mapStateToProps = (state) =>{
-    return state.three
+    console.log(state)
+    return state
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Thunk);
